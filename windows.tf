@@ -69,7 +69,7 @@ resource "aws_iam_role_policy" "s3read_policy" {
 EOF
 }
 
-# S3 bucket read profile
+# ALB self-signed cert
 resource "aws_iam_server_certificate" "self_signed" {
   name             = "self_signed"
   certificate_body = "${file("${var.certificate_body}")}"

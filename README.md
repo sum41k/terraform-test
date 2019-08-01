@@ -12,7 +12,7 @@ terraform plan
 terraform apply
 ```
 
-##Important Note
+## Important Note
 You should wait until script change index.html to our test static page from S3 Bucket.
 
 ## Delete

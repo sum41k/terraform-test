@@ -1,17 +1,25 @@
 node {
   // Mark the code checkout 'stage'....
-  sh 'export AWS_ACCESS_KEY_ID=${env.AWS_A_KEY_ID}'
-  sh 'export AWS_SECRET_ACCESS_KEY=${env.AWS_SA_KEY}'
+  sh label: '', script: 'export AWS_ACCESS_KEY_ID=${env.AWS_A_KEY_ID}'
+  sh label: '', script: 'export AWS_SECRET_ACCESS_KEY=${env.AWS_SA_KEY}'
+  stage 'Source' {
+    git credentialsId: 'github_token', url: 'https://github.com/sum41k/terraform-test.git'
+  }
   stage 'Stage Terraform Plan' {
-    sh 'terraform plan -out=./plan.txt'
+    dir('/var/lib/jenkins/terraform-test') {
+    sh label: '', script: 'terraform plan -out=./plan.txt'
+    }
   }
 
-  // Checkout code from repository and update any submodules
-
+  stage 'Archive Artifact' {
+    dir('/var/lib/jenkins/terraform-test') {
+    archiveArtifacts './plan.txt'
+    }
+  }
 
   stage 'Stage Terraform Apply'{
     input(message: "Should we continue?")
-    sh 'terraform apply -auto-approve'
+    sh label: '', script: 'terraform apply -auto-approve'
   }
 
 }

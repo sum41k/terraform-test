@@ -1,6 +1,4 @@
 variable "region" {   default = "eu-central-1" }
-variable "access_key" {   default = "xxxxxxxxx" }
-variable "secret_key" {   default = "xxxxxxxxx" }
 variable "bucket" {   default = "xxxxxxxxx" }
 variable "certificate_body" {   default = "certificates/self_signed.crt"}
 variable "private_key" {   default = "certificates/self_signed.key"}

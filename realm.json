@@ -1,5 +1,5 @@
 {
-	"realm": "stakater",
+	"realm": "openshift",
 	"enabled": true,
 	"loginTheme": "keycloak",
 	"sslRequired": "external"

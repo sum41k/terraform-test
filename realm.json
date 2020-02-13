@@ -1,0 +1,6 @@
+{
+	"realm": "stakater",
+	"enabled": true,
+	"loginTheme": "keycloak",
+	"sslRequired": "external"
+}
